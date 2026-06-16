@@ -28,7 +28,7 @@ on:
 
 jobs:
   create-matrix:
-    runs-on: ubuntu-latest
+    runs-on: amagi-amd64
     permissions:
       # required for all workflows
       security-events: write
@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Get languages from repo
         id: set-matrix
-        uses: advanced-security/set-codeql-language-matrix@v1
+        uses: uses: amagimedia/set-codeql-language-matrix@main
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
           endpoint: ${{ github.event.repository.languages_url }}
@@ -65,7 +65,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -96,13 +96,13 @@ It's possible you may choose to exclude specific languages from your CodeQL scan
 Example:
 ``` yaml
   create-matrix:
-    runs-on: ubuntu-latest
+    runs-on: amagi-amd64
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Get languages from repo
         id: set-matrix
-        uses: advanced-security/set-codeql-language-matrix@v1
+        uses: amagimedia/set-codeql-language-matrix@main
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
           endpoint: ${{ github.event.repository.languages_url }}
@@ -119,13 +119,13 @@ If you want to override this behavior and use manual build mode for specific lan
 
 ``` yaml
   create-matrix:
-    runs-on: ubuntu-latest
+    runs-on: amagi-amd64
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Get languages from repo
         id: set-matrix
-        uses: advanced-security/set-codeql-language-matrix@v1
+        uses: amagimedia/set-codeql-language-matrix@main
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
           endpoint: ${{ github.event.repository.languages_url }}
