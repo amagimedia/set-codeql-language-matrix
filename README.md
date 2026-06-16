@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Get languages from repo
         id: set-matrix
-        uses: uses: amagimedia/set-codeql-language-matrix@main
+        uses: amagimedia/set-codeql-language-matrix@main
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
           endpoint: ${{ github.event.repository.languages_url }}
